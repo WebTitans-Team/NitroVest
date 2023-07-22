@@ -105,7 +105,7 @@ contract RealEstateMarketplace {
         }
     }
 
-        // Function to buy NFT fractions representing a portion of the property
+        // Function to buy NFT either as a whole or as fractions representing a portion of the property
     function buyProperty(uint256 _propertyId, uint256[] calldata _tokenIds) external payable checkPartial(_propertyId, _tokenIds) {
         Property storage property = properties[_propertyId];
         uint256 _tokensAmount = _tokenIds.length;
