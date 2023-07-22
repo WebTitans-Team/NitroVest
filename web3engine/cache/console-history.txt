@@ -1,9 +1,0 @@
-await nitrovest.store(5)
-const nitrovest = await NitroVest.attach('0xCF8f7fdBFef2549D5ea981aaCa586068Be89756B');
-const  NitroVest = await ethers.getContractFactory('NitroVest');
-await nitrovest.store(5)
-await box.store(5)
-const nitrovest = await NitroVest.attach('0xCF8f7fdBFef2549D5ea981aaCa586068Be89756B');
-const  NitroVest = await ethers.getContractFactory('NitroVest');
-const nitrovest = await NitroVest.attach('0xCF8f7fdBFef2549D5ea981aaCa586068Be89756B');
-const  NitroVest = await ethers.getContractFactory

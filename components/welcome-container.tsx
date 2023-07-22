@@ -4,7 +4,7 @@ import DetailsContainer from "./details-container";
 
 const WelcomeContainer: NextPage = () => {
   return (
-    <div className="w-full mx-auto mb-16 text-black-200">
+    <div className="-full mx-auto mb-16 text-black-200">
       <div className="w-full h-fit flex flex-row justify-between items-center gap-4 mb-14">
         <div className="w-[45%] rounded-t-291xl-5 rounded-b-none shadow-[0px_24px_5,_0,_0,_0.1)] 
             border-[1px] border-solid border-white"
