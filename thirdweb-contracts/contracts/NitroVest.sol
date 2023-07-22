@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
@@ -66,9 +66,10 @@ contract RealEstateMarketplace {
         uint256 _areaInSqFt,
         uint256 _listingPrice,
         uint256 _totalTokens,
+        address _owner,
         bool _allowPartial
     ) external {
-        require(_totalTokens > 0, "zero tokens");
+        require(msg.sender == owner, "Not authorized");
 
         // Create a new ERC721 token for the property
         CustomNFT newNFT = new CustomNFT("PropertyToken", "PTK");
@@ -77,7 +78,7 @@ contract RealEstateMarketplace {
             Property({
                 details: _details,
                 areaInSqFt: _areaInSqFt,
-                owner: msg.sender,
+                owner: _owner,
                 listingPrice: _listingPrice,
                 totalTokens: _totalTokens,
                 tokenPrice: tokenPrice_,
@@ -112,10 +113,13 @@ contract RealEstateMarketplace {
         uint256 totalPrice = property.tokenPrice * _tokensAmount;
         uint256 contractFee = (totalPrice * contractFeePercentage) / 100;
 
-        require(msg.value >= totalPrice + contractFee, "Insufficient Ether");
+        require(msg.value >= totalPrice, "Insufficient Ether");
+
+        // Calculate the amount to be paid to the property owner (excluding contract fee)
+        uint256 ownerPayment = totalPrice - contractFee;
 
         // Transfer the property price (excluding the contract fee) to the property owner
-        payable(property.owner).transfer(totalPrice);
+        payable(property.owner).transfer(ownerPayment);
 
         // Transfer the contract fee to the contract itself
         payable(address(this)).transfer(contractFee);
@@ -130,11 +134,13 @@ contract RealEstateMarketplace {
             userOwnedTokens[msg.sender].push(tokenId); // Update buyer's owned tokens
         }
 
+
         property.tokensSold += _tokensAmount;
         property.equity -= totalPrice;
 
         emit PropertyTokenized(_propertyId, msg.sender, _tokensAmount);
     }
+
 
          // Function to get investors count for all properties listed by the sender
     function getUserListedPropertyInvestorsCount() public view returns (uint256[] memory) {
@@ -163,11 +169,6 @@ contract RealEstateMarketplace {
         uint256 totalEquity = property.listingPrice - (property.tokensSold * property.tokenPrice);
         return totalEquity;
     }
-
-    // Function to get all properties in the properties array
-    // function getAllProperties() external view returns (Property[] memory) {
-    //     return properties;
-    // }
 
     function resetContractFeePercentage(uint256 _fee) external {
         require(msg.sender == owner, "Not authorized");
