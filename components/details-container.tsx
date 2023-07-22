@@ -2,32 +2,36 @@ import type { NextPage } from "next";
 
 const DetailsContainer: NextPage = () => {
   return (
-    <div className="absolute h-[26.77%] w-[47.28%] top-[39.29%] right-[0%] bottom-[33.94%] left-[52.72%] bg-white [backdrop-filter:blur(4px)] text-left text-lg text-black-200 font-title-heading-4">
-      <div className="absolute h-[28.51%] w-[34.7%] top-[13.62%] right-[63.65%] bottom-[57.87%] left-[1.64%] flex flex-row items-center justify-start gap-[16px]">
-        <img
-          className="relative rounded-[50%] w-16 h-16 object-cover"
-          alt=""
-          src="/unsplashxhvpwcr5grq@2x.png"
-        />
-        <div className="w-[131px] h-[67px] flex flex-col items-start justify-end gap-[4px]">
-          <div className="relative">@samanthaw</div>
-          <div className="relative text-5xl font-semibold">Listing #01</div>
+    <div className="w-full mt-8 bg-white [backdrop-filter:blur(4px)] text-black-200 font-title-heading-4">
+      <div className="w-11/12 mx-auto mt-2 pb-2 flex flex-row justify-between items-center border-b-[1px] border-solid border-black-100" >
+        <div className="flex flex-row items-center gap-3">
+          <img
+            className="w-16 h-16 rounded-full"
+            alt="avatar"
+            src="/unsplashxhvpwcr5grq@2x.png"
+          />
+          <div className="">
+            <p>@samanthaw</p>
+            <p className="text-4xl font-semibold">Listing #01</p>
+          </div>
+        </div>
+
+        <div className=" text-gray">
+          <p>Current Bid</p>
+          <p className="text-4xl font-semibold text-black-100">
+            1.00 ETH
+          </p>
         </div>
       </div>
-      <div className="absolute top-[155px] left-[32px] w-[544px] h-12 flex flex-row items-center justify-start gap-[16px] text-white">
-        <div className="bg-mediumblue-100 w-[264px] h-12 flex flex-row py-4 px-[26px] box-border items-center justify-center">
-          <div className="relative font-semibold">Bid Now</div>
-        </div>
-        <div className="w-[264px] h-12 flex flex-row py-4 px-[26px] box-border items-center justify-center text-black-200">
-          <div className="relative font-semibold">View Details</div>
-        </div>
-      </div>
-      <div className="absolute h-[0.43%] w-[89.64%] top-[52.13%] right-[8.8%] bottom-[47.45%] left-[1.56%] box-border border-t-[1px] border-solid border-black-100" />
-      <div className="absolute top-[32px] left-[453px] w-[101px] h-[67px] flex flex-col items-end justify-center gap-[4px] text-gray">
-        <div className="relative">Current Bid</div>
-        <div className="relative text-5xl font-semibold text-black-100">
-          1.00 ETH
-        </div>
+
+      <div className="w-11/12 mx-auto my-2 flex flex-row items-center justify-center gap-3">
+        <p className="w-[45%] h-12 text-white bg-mediumblue-100 font-semibold flex flex-col items-center justify-center">
+          Bid Now
+        </p>
+
+        <p className="w-[45%] h-12 flex flex-col items-center justify-center text-black-200 font-semibold">
+          View Details
+        </p>
       </div>
     </div>
   );

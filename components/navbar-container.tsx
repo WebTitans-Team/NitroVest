@@ -1,33 +1,37 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 const NavbarContainer: NextPage = () => {
   return (
-    <div className="self-stretch relative h-[60px] text-left text-base text-white font-title-heading-4">
-      <div className="absolute top-[11.67%] left-[0%] text-[27.15px]">
+    <div className="w-full mx-auto my-8 flex flex-row justify-between items-center gap-3">
+      <div className="text-[27.15px] text-white">
         <b>Nitro</b>
-        <span className="font-light">Vest</span>
+        <span className="font-light font-title-heading-4">Vest</span>
       </div>
-      <div className="absolute top-[23.33%] left-[66.47%] tracking-[0.01em] [-webkit-text-stroke:0.2px_#000]">
-        Contact
-      </div>
-      <div className="absolute top-[23.33%] left-[41.36%] tracking-[0.01em] [-webkit-text-stroke:0.2px_#000]">
-        Home
-      </div>
-      <div className="absolute top-[23.33%] left-[49.18%] tracking-[0.01em] [-webkit-text-stroke:0.2px_#000]">
-        Listings
-      </div>
-      <div className="absolute top-[23.33%] left-[56.93%] tracking-[0.01em] [-webkit-text-stroke:0.2px_#000]">
-        Aunctions
-      </div>
-      <div className="absolute h-full w-[19.45%] top-[0%] right-[1.19%] bottom-[0%] left-[79.36%] flex flex-row items-center justify-between text-lg text-mediumblue-100 font-nunito-sans">
-        <div className="rounded-2xl flex flex-row p-2 items-center justify-center">
-          <div className="relative [text-decoration:underline] leading-[40px]">
-            Sign In
-          </div>
-        </div>
-        <div className="rounded-13xl bg-mediumblue-100 w-[189px] h-[60px] flex flex-row p-2 box-border items-center justify-center text-white font-title-heading-4">
-          <div className="relative">Submit Listing</div>
-        </div>
+
+      <ul className={`flex flex-row justify-center items-center gap-8 list-none`}>
+        {[
+          ['Home', '/'],
+          ['Contact', '/'],
+          ['Listings', '/'],
+          ['Aunctions', '/'],
+        ].map(([list, url], index) => (
+          <li key={index}>
+              <Link href={`${url}`} className="text-white no-underline">
+                {list}
+              </Link>
+          </li>
+        ))}
+		  </ul>
+
+      <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
+        <p className="[text-decoration:underline]">
+          Sign In
+        </p>
+      
+        <p className="rounded-13xl bg-mediumblue-100 w-[189px] h-[60px] flex flex-col p-2 box-border items-center justify-center text-white font-title-heading-4">
+          Submit Listing
+        </p>
       </div>
     </div>
   );

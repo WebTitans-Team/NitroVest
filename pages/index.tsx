@@ -6,27 +6,23 @@ import NewsletterSubscriptionContaine from "../components/newsletter-subscriptio
 import QuickSearchContainer from "../components/quick-search-container";
 import WelcomeContainer from "../components/welcome-container";
 import AppUsageContainer from "../components/app-usage-container";
-import DoContainer from "../components/do-container";
+import Footer from "../components/Footer";
 import ContainerList from "../components/container-list";
 
 const NitroVestApp: NextPage = () => {
   return (
-    <div className="relative bg-black-200 w-full h-[5628px] overflow-hidden">
-      <div className="absolute top-[32px] left-[58px] w-[1342px] flex flex-col items-start justify-start">
+    <div className="max-w-screen-2xl w-11/12 h-full m-auto font-nunito-sans text-base text-white">
+      <div className="w-full h-auto mx-auto">
         <NavbarContainer />
       </div>
       <SecurePropertyInvestmentSectio />
+      <WelcomeContainer />
+      <QuickSearchContainer />
+      <ContainerList />
+      <AppUsageContainer />
       <ClientTestimonialContainer />
       <NewsletterSubscriptionContaine />
-      <QuickSearchContainer />
-      <div className="absolute top-[840px] left-[82px] flex flex-col items-start justify-start">
-        <WelcomeContainer />
-      </div>
-      <AppUsageContainer />
-      <DoContainer />
-      <div className="absolute top-[2234px] left-[192px] w-[1086px] h-[448px] flex flex-col items-center justify-end">
-        <ContainerList />
-      </div>
+      <Footer />
     </div>
   );
 };

@@ -1,40 +1,34 @@
 import type { NextPage } from "next";
-import { useMemo } from "react";
-import CSS, { Property } from "csstype";
 
 type ContainerListing01Type = {
-  productIds?: string;
-
-  /** Style props */
-  propWidth?: Property.Width;
+  productIds: string;
+  title: string;
+  description: string
 };
 
 const ContainerListing01: NextPage<ContainerListing01Type> = ({
   productIds,
-  propWidth,
+  title,
+  description,
 }) => {
-  const divStyle: CSS.Properties = useMemo(() => {
-    return {
-      width: propWidth,
-    };
-  }, [propWidth]);
+ 
 
   return (
     <div
-      className="bg-text-and-main-white w-[311px] h-[219px] flex flex-col p-8 box-border items-start justify-center gap-[8px] text-left text-5xl text-black-200 font-title-heading-4"
-      style={divStyle}
+      className="bg-text-and-main-white flex flex-col p-4 box-border items-start justify-center gap-1 
+           rounded font-title-heading-4"
     >
       <img
-        className="relative w-16 h-16 overflow-hidden shrink-0"
+        className="w-16 h-16"
         alt=""
         src={productIds}
       />
-      <div className="flex flex-col items-start justify-start gap-[8px]">
-        <div className="relative font-semibold">Listing #01</div>
-        <div className="relative text-lg text-text-and-main-gray-2 inline-block w-[300px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </div>
-      </div>
+      
+      <p className="font-semibold text-5xl text-black-200">{title}</p>
+      <p className="text-text-and-main-gray-2">
+        {description}
+      </p>
+      
     </div>
   );
 };
