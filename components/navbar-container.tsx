@@ -31,18 +31,9 @@ const NavbarContainer: NextPage = () => {
 		  </ul>
 
       <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
-      <div className={styles.connect}>
-            <ConnectWallet
-              dropdownPosition={{
-                side: "bottom",
-                align: "center",
-              }}
-            />
-          </div>
-      
-        <p className="rounded-13xl bg-mediumblue-100 w-[189px] h-[60px] flex flex-col p-2 box-border items-center justify-center text-white font-title-heading-4">
-          Submit Listing
-        </p>
+
+        <ConnectWallet/>
+       
       </div>
     </div>
   );
