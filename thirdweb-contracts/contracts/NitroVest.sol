@@ -103,16 +103,16 @@ contract RealEstateMarketplace {
             uint256 propertyId = properties.length - 1;
 
         // Store the property ID in the propertyOwnerListings mapping for the property owner
-        propertyOwnerListings[msg.sender].push(propertyId);
+        propertyOwnerListings[_owner].push(propertyId);
 
         emit PropertyListed(propertyId);
 
         // Mint tokens to the property owner
         for (uint256 i = 0; i < _totalTokens; i++) {
             uint256 tokenId = properties.length * 1000 + i; // Create unique tokenIds
-            newNFT.mint(msg.sender, tokenId);
-            tokenBalances[propertyId][msg.sender]++;
-            userOwnedTokens[msg.sender].push(tokenId);
+            newNFT.mint(_owner, tokenId);
+            tokenBalances[propertyId][_owner]++;
+            userOwnedTokens[_owner].push(tokenId);
         }
     }
 
@@ -129,11 +129,11 @@ contract RealEstateMarketplace {
         // Calculate the amount to be paid to the property owner (excluding contract fee)
         uint256 ownerPayment = totalPrice - contractFee;
 
-        // Transfer the property price (excluding the contract fee) to the property owner
-        payable(property.owner).transfer(ownerPayment);
+        // Transfer the payment to the contract (including the contract fee)
+        payable(address(this)).transfer(totalPrice);
 
-        // Transfer the contract fee to the contract itself
-        payable(address(this)).transfer(contractFee);
+        // Transfer the payment (excluding the contract fee) to the property owner
+        payable(property.owner).transfer(ownerPayment);
 
         // Transfer the NFT fractions to the buyer and update userOwnedTokens mapping
         for (uint256 i = 0; i < _tokensAmount; i++) {
@@ -145,13 +145,11 @@ contract RealEstateMarketplace {
             userOwnedTokens[msg.sender].push(tokenId); // Update buyer's owned tokens
         }
 
-
         property.tokensSold += _tokensAmount;
         property.equity -= totalPrice;
 
         emit PropertyTokenized(_propertyId, msg.sender, _tokensAmount);
     }
-
 
          // Function to get investors count for all properties listed by the sender
     function getUserListedPropertyInvestorsCount() public view returns (uint256[] memory) {
