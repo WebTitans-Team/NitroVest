@@ -32,7 +32,7 @@ const NavbarContainer: NextPage = () => {
 
       <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
 
-        <ConnectWallet/>
+        < ConnectWallet />
        
       </div>
     </div>
