@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@thirdweb-dev/chains": "^0.1.38",
         "@thirdweb-dev/react": "^3.14.20",
         "@thirdweb-dev/sdk": "^3.10.40",
         "@types/debug": "^4.1.8",

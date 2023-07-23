@@ -1657,7 +1657,7 @@
     "@tanstack/query-core" "4.32.0"
     use-sync-external-store "^1.2.0"
 
-"@thirdweb-dev/chains@0.1.38":
+"@thirdweb-dev/chains@0.1.38", "@thirdweb-dev/chains@^0.1.38":
   version "0.1.38"
   resolved "https://registry.yarnpkg.com/@thirdweb-dev/chains/-/chains-0.1.38.tgz#57e93239645a013f0677c711f3f1cdc7cde54db8"
   integrity sha512-XiH/2X5Hgs50fWMX0u4pB/hv2dZSnFSDwF1i54YViDv1Ydganzwt2PEK1Fct0u4Oz8FHww2ybc459FDNaRBnew==

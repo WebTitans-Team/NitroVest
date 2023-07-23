@@ -12,7 +12,9 @@ import { Moonbeam } from '@thirdweb-dev/chains';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-    <ThirdwebProvider activeChain={Moonbeam}>
+    <ThirdwebProvider 
+    
+    activeChain={Moonbeam}>
       <CustomNFTProvider>
         <RealEstateMarketplaceProvider>
           <Head>
