@@ -129,9 +129,6 @@ contract RealEstateMarketplace {
         // Calculate the amount to be paid to the property owner (excluding contract fee)
         uint256 ownerPayment = totalPrice - contractFee;
 
-        // Transfer the payment to the contract (including the contract fee)
-        payable(address(this)).transfer(totalPrice);
-
         // Transfer the payment (excluding the contract fee) to the property owner
         payable(property.owner).transfer(ownerPayment);
 
