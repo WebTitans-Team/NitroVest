@@ -1,0 +1,15 @@
+A property is created and listed using the createAndListProperty function. This function takes various details of the property, such as name, description, area, listing price, total number of tokens to represent the property, and whether partial purchases are allowed (_allowPartial).
+
+The function then creates a new ERC721 NFT contract named CustomNFT representing the property and mints tokens to the property owner.
+
+The property details and relevant data, including the ERC721 NFT contract, are stored in the properties array.
+
+The propertyOwnerListings mapping keeps track of all the properties listed by each property owner.
+
+The buyProperty function allows users to buy NFT fractions representing a portion of the property. The user can purchase multiple tokens (fractions) representing different parts of the property.
+
+When the tokens are purchased, the ownership of these tokens is transferred to the buyer, and the corresponding ownership information is updated in the tokenBalances and userOwnedTokens mappings.
+
+The propertyInvestorsCount mapping keeps track of the number of investors for each listed property.
+
+The getEquity function calculates the current equity of a property by subtracting the tokenized value from the listing price.

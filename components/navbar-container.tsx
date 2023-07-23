@@ -13,7 +13,7 @@ const NavbarContainer: NextPage = () => {
         {[
           ['Home', '/'],
           ['Contact', '/'],
-          ['Listings', '/'],
+          ['Listings', '/listing'],
           ['Aunctions', '/'],
         ].map(([list, url], index) => (
           <li key={index}>

@@ -1,0 +1,110 @@
+Now let's update the component where the user can add a new property listing:
+import React, { useState } from 'react';
+import { useRealEstateMarketplace } from './path/to/RealEstateMarketplaceProvider';
+
+const AddListingForm: React.FC = () => {
+  const { addListing } = useRealEstateMarketplace();
+
+  // State to hold the form data
+  const [formData, setFormData] = useState({
+    details: ['', '', '', ''], // Replace with the necessary details of the property (name, description, address, type)
+    areaInSqFt: 0,
+    listingPrice: 0,
+    totalTokens: 0,
+    allowPartial: false,
+  });
+
+  // Function to handle form submission
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Call the addListing function from the RealEstateMarketplaceProvider
+    addListing(formData);
+  };
+
+  // Function to handle form input changes
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    // Update the formData state with the new value
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Add the necessary form inputs here */}
+      {/* Example: */}
+      <input type="text" name="details[0]" value={formData.details[0]} onChange={handleChange} />
+      <input type="number" name="areaInSqFt" value={formData.areaInSqFt} onChange={handleChange} />
+      <input type="number" name="listingPrice" value={formData.listingPrice} onChange={handleChange} />
+      <input type="number" name="totalTokens" value={formData.totalTokens} onChange={handleChange} />
+      <label>
+        Allow Partial:
+        <input type="checkbox" name="allowPartial" checked={formData.allowPartial} onChange={handleChange} />
+      </label>
+      <button type="submit">Add Listing</button>
+    </form>
+  );
+};
+
+export default AddListingForm;
+
+
+Next, let's update the component where the user can buy a property:
+
+tsx
+
+
+
+import React, { useState } from 'react';
+import { useRealEstateMarketplace } from './path/to/RealEstateMarketplaceProvider';
+
+const BuyPropertyForm: React.FC = () => {
+  const { buyProperty } = useRealEstateMarketplace();
+
+  // State to hold the form data
+  const [formData, setFormData] = useState({
+    propertyId: 0,
+    tokenIds: '',
+  });
+
+  // Function to handle form submission
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Convert the comma-separated tokenIds string to an array of numbers
+    const tokenIdsArray = formData.tokenIds.split(',').map(Number);
+
+    // Call the buyProperty function from the RealEstateMarketplaceProvider
+    buyProperty(formData.propertyId, tokenIdsArray);
+  };
+
+  // Function to handle form input changes
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    // Update the formData state with the new value
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Add the necessary form inputs here */}
+      {/* Example: */}
+      <input type="number" name="propertyId" value={formData.propertyId} onChange={handleChange} />
+      <input type="text" name="tokenIds" value={formData.tokenIds} onChange={handleChange} />
+      <button type="submit">Buy Property</button>
+    </form>
+  );
+};
+
+export default BuyPropertyForm;
+
+
+

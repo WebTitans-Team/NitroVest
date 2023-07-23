@@ -1,20 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "allowJs": true,
-      "skipLibCheck": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "noEmit": true,
-      "esModuleInterop": true,
-      "module": "esnext",
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "incremental": true
-    },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
-  }
+  "compilerOptions": {
+    "target": "es5", // Specifies the ECMAScript target version
+    "lib": ["dom", "dom.iterable", "esnext"], // List of library files to be included
+    "allowJs": true, // Allows JavaScript files to be compiled
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "strict": true, // Enables all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Enforces consistent casing in file names
+    "noEmit": true, // Does not emit any output files (we use Next.js to handle the compilation)
+    "esModuleInterop": true, // Allows default imports from modules with no default export
+    "module": "esnext", // Specify module code generation
+    "moduleResolution": "node", // Determines how modules are resolved
+    "resolveJsonModule": true, // Allows importing .json files as modules
+    "isolatedModules": true, // Ensures each file is treated as a separate module
+    "jsx": "preserve", // Specify JSX code generation (preserves JSX as-is)
+    "incremental": true // Enable incremental compilation (used for faster builds)
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"], // Files to be included in compilation
+  "typeRoots": ["./types", "./node_modules/@types"], // Folders containing type declaration files
+  "exclude": ["node_modules"] // Files to be excluded from compilation
+}
