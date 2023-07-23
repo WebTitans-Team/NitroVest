@@ -20,6 +20,10 @@ const RealEstateMarketplaceContext = createContext();
 
 // Provider component to wrap the app with the RealEstateMarketplaceContext
 export const RealEstateMarketplaceProvider = ({ children }) => {
+
+  const titleData = 'Crowd Funding Contract';
+  const [currentAccount, setCurrentAccount] = useState('');
+
   // State to hold the RealEstateMarketplace contract instance
   const [realEstateContract, setRealEstateContract] = useState(null);
   
@@ -158,8 +162,8 @@ useEffect(() => {
   return (
     <RealEstateMarketplaceContext.Provider
       value={{
-        //titleData,
-        //currentAccount,
+        titleData,
+        currentAccount,
         createAndListProperty,
         buyProperty,
         withdrawBalance, // Add the withdrawBalance function to the provider's value

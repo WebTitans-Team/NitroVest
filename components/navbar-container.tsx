@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import { ConnectWallet } from "@thirdweb-dev/react";
+import styles from "../styles/Home.module.css";
 
 const NavbarContainer: NextPage = () => {
   return (
@@ -21,13 +23,22 @@ const NavbarContainer: NextPage = () => {
                 {list}
               </Link>
           </li>
+
+          
         ))}
+
+      
 		  </ul>
 
       <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
-        <p className="[text-decoration:underline]">
-          Sign In
-        </p>
+      <div className={styles.connect}>
+            <ConnectWallet
+              dropdownPosition={{
+                side: "bottom",
+                align: "center",
+              }}
+            />
+          </div>
       
         <p className="rounded-13xl bg-mediumblue-100 w-[189px] h-[60px] flex flex-col p-2 box-border items-center justify-center text-white font-title-heading-4">
           Submit Listing

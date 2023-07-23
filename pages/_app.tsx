@@ -4,10 +4,12 @@ import type { AppProps } from "next/app";
 import { CustomNFTProvider } from '../Context/CustomNFTProvider';
 import { RealEstateMarketplaceProvider } from '../Context/RealEstateMarketplaceProvider';
 import "./global.css";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+    <ThirdwebProvider>
       <CustomNFTProvider>
         <RealEstateMarketplaceProvider>
           <Head>
@@ -20,6 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </RealEstateMarketplaceProvider>
       </CustomNFTProvider>
+    
+    </ThirdwebProvider>
     </>
   );
 }
