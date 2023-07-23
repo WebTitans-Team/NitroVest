@@ -6,10 +6,21 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 contract CustomNFT is ERC721Enumerable {
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
 
+    mapping(uint256 => string) private _tokenMetadata;
+
     function mint(address to, uint256 tokenId) external {
         _mint(to, tokenId);
     }
+
+    function _setTokenMetadata(uint256 tokenId, string memory metadata) internal {
+        _tokenMetadata[tokenId] = metadata;
+    }
+
+    function getTokenMetadata(uint256 tokenId) external view returns (string memory) {
+        return _tokenMetadata[tokenId];
+    }
 }
+
 
 contract RealEstateMarketplace {
 
@@ -105,7 +116,7 @@ contract RealEstateMarketplace {
         }
     }
 
-        // Function to buy NFT either as a whole or as fractions representing a portion of the property
+        // Function to buy NFT fractions representing a portion of the property
     function buyProperty(uint256 _propertyId, uint256[] calldata _tokenIds) external payable checkPartial(_propertyId, _tokenIds) {
         Property storage property = properties[_propertyId];
         uint256 _tokensAmount = _tokenIds.length;
