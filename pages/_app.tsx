@@ -6,10 +6,13 @@ import { RealEstateMarketplaceProvider } from '../Context/RealEstateMarketplaceP
 import "./global.css";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
+import { Moonbeam } from '@thirdweb-dev/chains';
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-    <ThirdwebProvider>
+    <ThirdwebProvider activeChain={Moonbeam}>
       <CustomNFTProvider>
         <RealEstateMarketplaceProvider>
           <Head>
