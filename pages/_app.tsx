@@ -4,10 +4,17 @@ import type { AppProps } from "next/app";
 import { CustomNFTProvider } from '../Context/CustomNFTProvider';
 import { RealEstateMarketplaceProvider } from '../Context/RealEstateMarketplaceProvider';
 import "./global.css";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
+
+import { Moonbeam } from '@thirdweb-dev/chains';
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+    <ThirdwebProvider 
+    
+    activeChain={Moonbeam}>
       <CustomNFTProvider>
         <RealEstateMarketplaceProvider>
           <Head>
@@ -20,6 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </RealEstateMarketplaceProvider>
       </CustomNFTProvider>
+    
+    </ThirdwebProvider>
     </>
   );
 }

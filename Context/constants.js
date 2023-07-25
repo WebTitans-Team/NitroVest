@@ -2,9 +2,9 @@
 import CustomNFT from './CustomNFT.json';
 import RealEstateMarketplace from './RealEstateMarketplace.json';
 
-export const RealEstateMarketplaceAddress = "0x52D3275A192429b33EBd6D375271bA109F22DFB6";
+export const RealEstateMarketplaceAddress = "0x021CE8a391AFBb60759230F0af6940470Ac1EC2f";
 
-export const CustomNFTAddress = "0xF9fa3520ea9637cC61baf037f7FB285685bf0504";
+export const CustomNFTAddress = "0xd52558A97307F9Cc748D02D0CA70f1F27Bd9FE1f";
 
 // Use a different variable name for the imported JSON ABI
 export const CustomNFTABI = CustomNFT.abi;

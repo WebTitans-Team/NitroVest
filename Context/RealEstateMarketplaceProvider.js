@@ -12,7 +12,7 @@ new ethers.Contract(RealEstateMarketplaceAddress, RealEstateMarketplaceABI, sign
 
 
 
-const RealEstateMarketplaceAddress = '0xbc7EeFd57B5F13bC4C4BEaF82A857c460029cCC0'; // Replace with the actual contract address
+// const RealEstateMarketplaceAddress = '0xbc7EeFd57B5F13bC4C4BEaF82A857c460029cCC0'; // Replace with the actual contract address
 
 
 // Create a context to hold the RealEstateMarketplace contract instance and functions
@@ -20,25 +20,12 @@ const RealEstateMarketplaceContext = createContext();
 
 // Provider component to wrap the app with the RealEstateMarketplaceContext
 export const RealEstateMarketplaceProvider = ({ children }) => {
+
+  const titleData = 'Crowd Funding Contract';
+  const [currentAccount, setCurrentAccount] = useState('');
+
   // State to hold the RealEstateMarketplace contract instance
   const [realEstateContract, setRealEstateContract] = useState(null);
-  async function initContract() {
-    try {
-      const web3Modal = new Web3Modal();
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
-      const signer = provider.getSigner();
-
-      const contract = new ethers.Contract(RealEstateMarketplaceAddress, RealEstateMarketplaceABI, signer);
-      setRealEstateContract(contract);
-    } catch (error) {
-      console.error('Failed to initialize contract:', error);
-    }
-  }
-
-  useEffect(() => {
-    initContract();
-  }, []);
   
   // Function to create and list a new property on the marketplace
   const createAndListProperty = async (
@@ -146,6 +133,10 @@ const initContract = async () => {
     // Initialize the provider and signer with the current Ethereum provider
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+   
+      
 
     // Create a new contract instance
     const realEstateContract = new ethers.Contract(
