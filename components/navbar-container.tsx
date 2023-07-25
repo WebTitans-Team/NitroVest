@@ -1,9 +1,24 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { ConnectWallet } from "@thirdweb-dev/react";
+<<<<<<< main
+import {
+  ConnectWallet,
+  useAddress,
+  useContract,
+  useContractRead,
+} from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
+import { RealEstateMarketplaceAddress } from "../Context/constants";
 
 const NavbarContainer: NextPage = () => {
+  const address = useAddress();
+
+  const { contract } = useContract(RealEstateMarketplaceAddress);
+
+  const { data: owner, isLoading: isLoadingOwner } = useContractRead(
+    contract,
+    "owner"
+  );
   return (
     <div className="w-full mx-auto my-8 flex flex-row justify-between items-center gap-3">
       <div className="text-[27.15px] text-white">
@@ -11,32 +26,31 @@ const NavbarContainer: NextPage = () => {
         <span className="font-light font-title-heading-4">Vest</span>
       </div>
 
-      <ul className={`flex flex-row justify-center items-center gap-8 list-none`}>
+      <ul
+        className={`flex flex-row justify-center items-center gap-8 list-none`}
+      >
         {[
-          ['Home', '/'],
-          ['Contact', '/'],
-          ['Listings', '/listing'],
-          ['Aunctions', '/'],
+          ["Home", "/"],
+          ["Contact", "/"],
+          ["Listings", "/listing"],
+          ["Aunctions", "/"],
         ].map(([list, url], index) => (
           <li key={index}>
-              <Link href={`${url}`} className="text-white no-underline">
-                {list}
-              </Link>
+            <Link href={`${url}`} className="text-gray-500 no-underline">
+              {list}
+            </Link>
           </li>
 
           
         ))}
-
-      
-		  </ul>
+<<<<<<< main
+      </ul>
 
       <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
-
-        < ConnectWallet />
-       
-      </div>
-    </div>
-  );
-};
-
-export default NavbarContainer;
+        {!isLoadingOwner && owner === address && (
+          <Link href={"/admin"}>
+            <Button mr={4}>Admin Page</Button>
+          </Link>
+        )}
+        <ConnectWallet />
+=======
