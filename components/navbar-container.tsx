@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-<<<<<<< main
+
 import {
   ConnectWallet,
   useAddress,
@@ -43,7 +43,7 @@ const NavbarContainer: NextPage = () => {
 
           
         ))}
-<<<<<<< main
+
       </ul>
 
       <div className="flex flex-row items-center justify-between gap-2 text-lg text-mediumblue-100">
@@ -53,4 +53,3 @@ const NavbarContainer: NextPage = () => {
           </Link>
         )}
         <ConnectWallet />
-=======
